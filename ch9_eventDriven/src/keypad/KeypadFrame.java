@@ -29,7 +29,7 @@ public class KeypadFrame extends JFrame implements ActionListener {
 		this.add(txtResult, BorderLayout.NORTH); //텍스트필드 NORTH 설정하여 Frame에 넣기
 		this.add(pnlNumberPad, BorderLayout.CENTER); //키패드 판넬 CENTER 설정하여 Frame에 넣기
 		
-		this.pack();
+		//this.pack();
 		this.setVisible(true);
 	}
 

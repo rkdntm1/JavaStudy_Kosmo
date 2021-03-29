@@ -33,7 +33,7 @@ public class PuzzlFrame extends JFrame implements ActionListener {
 		btnReset.setBackground(Color.red);
 		btnReset.setForeground(Color.yellow);
 		btnReset.addActionListener(this);
-		this.pack();
+		//this.pack();
 		this.setVisible(true);
 	}
 
@@ -68,15 +68,17 @@ public class PuzzlFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton button = (JButton) e.getSource();
 		char collect = 'c';
+		// 클릭한곳 주변을 조사하여 빈칸이면 바꾸어줍니다.
 		for (int row = 0; row < NUMBERPAD2.length; row++) {
 			for (int col = 0; col < NUMBERPAD2[0].length; col++) {
 				if (button.getText().equals("")) { // 빈칸을 눌렀을경우
 					System.out.println("빈칸누름");
+					return;
 				} else if (button.getLabel() == "reset") { // reset 눌렀을경우 초기화
 					System.out.println("리셋");
 					btnNumberPad[row][col].setText(NUMBERPAD2[row][col]);
 				} else { // 숫자 버튼을 눌렀을 경우
-					rowEmpty(collect, row, col);
+					rowEmpty(collect, row, col);	
 					colEmpty(collect, row, col);
 					if (collect == 'd') {
 						btnNumberPad[row][col].setText(NUMBERPAD2[row][col]);
