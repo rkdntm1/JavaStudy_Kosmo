@@ -16,16 +16,11 @@ public class MyPanel extends JPanel implements MouseListener {
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(MouseEvent e) { // 마우스를 눌렀을때
 		if (index > 100){
 			return;			
 		}		
-		array[index] = new Rectangle();
-		array[index].x = e.getX();
-		array[index].y = e.getY();
-		array[index].width = 50;
-		array[index].height = 50;
-		index++;
+		array[index++] = new Rectangle(e.getX(), e.getY(), 50, 50);			
 		repaint();
 	}
 	
