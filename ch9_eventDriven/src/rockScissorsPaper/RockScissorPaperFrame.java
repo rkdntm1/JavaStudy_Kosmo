@@ -23,20 +23,20 @@ public class RockScissorPaperFrame extends JFrame implements ActionListener {
 		setSize(400, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pnlSelect.setLayout(new GridLayout(0, 3));
-		putBtn(); // 버튼 만들어서 판넬에 넣기
+		BtnInPnl(); // 버튼 만들어서 판넬에 넣기
 		
 		this.add(txtOfTop, BorderLayout.NORTH);
 		this.add(pnlSelect, BorderLayout.CENTER);
 		this.add(txtOfResult, BorderLayout.SOUTH);
 		
-		this.pack();
+//		this.pack();
 		this.setVisible(true);
 	}
 	
 	/**
 	 * 버튼 만들어 판넬에 넣기
 	 */
-	private void putBtn() {
+	private void BtnInPnl() {
 		pnlSelect.add(rock);
 		rock.addActionListener(this);
 		pnlSelect.add(paper);
@@ -53,14 +53,23 @@ public class RockScissorPaperFrame extends JFrame implements ActionListener {
 		String[] resultOfCom = {"사용자 승리", "비겼음", "컴퓨터 승리"}; 
 		//주먹 냈을때
 		if (e.getSource() == rock) {
-			txtOfResult.setText(resultOfCom[(int)(Math.random() * 3)]);
+			txtOfResult.setText(randOfReact(resultOfCom));
 			//보 냈을때
 		} else if (e.getSource() == paper) {
-			txtOfResult.setText(resultOfCom[(int)(Math.random() * 3)]);
+			txtOfResult.setText(randOfReact(resultOfCom));
 			//가위 냈을때
 		} else if (e.getSource() == scissor) {
-			txtOfResult.setText(resultOfCom[(int)(Math.random() * 3)]);			
+			txtOfResult.setText(randOfReact(resultOfCom));			
 		}
+	}
+
+	/**
+	 * 컴퓨터의 반응 3가지를 랜덤으로 출력 
+	 * @param resultOfCom
+	 * @return
+	 */
+	private String randOfReact(String[] resultOfCom) {
+		return resultOfCom[(int)(Math.random() * resultOfCom.length)];
 	}
 	
 	public static void main(String[] args) {

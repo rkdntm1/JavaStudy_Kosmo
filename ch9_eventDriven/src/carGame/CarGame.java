@@ -28,19 +28,22 @@ class CarPanel extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				int KeyCode = e.getKeyCode();
+				int Accelerate = 0;
 				
-				switch(KeyCode) {							
+				switch(KeyCode) {
+				case KeyEvent.VK_SHIFT:
+					Accelerate += 10;					
 				case KeyEvent.VK_UP:
-					yPos -= (SPEED);
+					yPos -= (SPEED + Accelerate);
 					break;
 				case KeyEvent.VK_DOWN:
-					yPos += (SPEED);;
+					yPos += (SPEED + Accelerate);;
 					break;
 				case KeyEvent.VK_LEFT:
-					xPos -= (SPEED);;
+					xPos -= (SPEED + Accelerate);;
 					break;
 				case KeyEvent.VK_RIGHT:
-					xPos += (SPEED);;
+					xPos += (SPEED + Accelerate);;
 					break;
 				}
 				repaint();

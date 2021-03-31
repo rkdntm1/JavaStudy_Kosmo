@@ -30,7 +30,7 @@ public class CalcFrame extends JFrame implements ActionListener {
 		
 		locateCenterWithHalfSize(); //창 사이즈 중간설정 및 중앙정렬
 		
-		pnlNumberPad.setLayout(new GridLayout(4, lblControls.length,3,3)); //넘버패드 레이아웃설정
+		pnlNumberPad.setLayout(new GridLayout(4, lblControls.length,	3,3)); //넘버패드 레이아웃설정
 		pnlControl.setLayout(new BoxLayout(pnlControl, BoxLayout.Y_AXIS)); //컨트롤패드 레이아웃설정
 		
 		putPanelMakeKeyPad();		// 넘버패드 버튼 만들어 판넬에 추가

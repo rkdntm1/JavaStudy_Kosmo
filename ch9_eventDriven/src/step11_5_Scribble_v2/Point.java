@@ -14,4 +14,5 @@ public class Point {
 		g.drawRect(x, y, 1, 1);
 	}
 	
+
 }
