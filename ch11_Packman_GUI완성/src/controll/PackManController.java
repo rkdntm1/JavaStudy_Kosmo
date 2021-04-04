@@ -7,7 +7,7 @@ public class PackManController {
 	private Board board;
 	private PackManWin packManWin;
 	
-	public PackManController() {
+	private PackManController() {
 		board = new Board(333);
 		packManWin = new PackManWin(board);
 	}
@@ -15,5 +15,4 @@ public class PackManController {
 	public static void main(String[] args) {
 		new PackManController();
 	}
-
 }

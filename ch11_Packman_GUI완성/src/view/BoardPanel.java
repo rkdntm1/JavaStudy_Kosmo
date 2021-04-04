@@ -9,9 +9,9 @@ import model.Board;
 
 public class BoardPanel extends JPanel {
 	private Board board;
-	
+
 	public BoardPanel(Board board) {
-		super(); // 상위클래스의 기본 생성자를 부름 . 있어도 없어도 됨.
+		super();
 		this.board = board;
 	}
 
@@ -20,6 +20,6 @@ public class BoardPanel extends JPanel {
 		super.paintComponent(g);
 		board.display(g);
 	}
-
+	
 	
 }

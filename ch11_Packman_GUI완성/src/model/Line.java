@@ -1,7 +1,6 @@
 package model;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,43 +10,47 @@ import utill.PositionObjectOn2D;
 
 /**
  * 미로를 구성하는 개별적인 선. 도로
- * @author KYH
  */
 public class Line {
 	// 선을 구성하는 두개의 점
-	private TurningPoint pointOfWestOrNorth, pointOpposite; 
+	private TurningPoint pointofWestOrNorth, pointOpposite;
 	//선에 놓인 먹이들
-	private List<Food> foods = new ArrayList<>();
+	private List<Food> foods = new ArrayList<>();	
+	// private List<Point> points = new ArrayList<>(); // 너무 결합시켜놓지 마시오. 분리할 수 있을때 미리미리 분리
 	
-	// 매개변수를 대명사로 바꿔준다
 	public Line(TurningPoint turningPoint1, TurningPoint turningPoint2) {
 		Pair<PositionObjectOn2D, PositionObjectOn2D> pair = turningPoint1.findWestOrNorth(turningPoint2);
-		pointOfWestOrNorth = (TurningPoint) pair.getFrist();
+		pointofWestOrNorth = (TurningPoint) pair.getFrist();
 		pointOpposite = (TurningPoint) pair.getSecond();
 		
-		pointOfWestOrNorth.addLine(this); // 0번 입장
-		pointOpposite.addLine(this); // 1번 입장
+		pointofWestOrNorth.addLine(this); // TurningPoint 에서 만든 attached 에다가 기억시키기
+		pointOpposite.addLine(this);
 		
-		// Food를 만드는 것은 서, 북에 있는 점을 기준으로 동, 남으로 걸어 가면서 간격별로 하나씩 만들겠습니다.
-		List<PositionObjectOn2D> steps = pointOfWestOrNorth.buildSteps(pointOpposite, Food.GAP); // GAP과 반대편 점의 데이터를 보내 먹이를 생성
+		//선의 길이 구하기 
+		//length = (int) pointofWestOrNorth.calcDistance(pointOpposite);
+		// Food를 만드는 것은 서, 북에 있는 점을 기준으로 동, 남으로 걸어가면서 간격별로 하나씩 만들겠습니다.
+		List<PositionObjectOn2D> steps = pointofWestOrNorth.bulidSteps(pointOpposite, Food.GAP);
 		for (PositionObjectOn2D po : steps) {
-			foods.add(new Food(po)); // 새로운 Food를 생성
+			foods.add(new Food(po));
 		}
+		
+		
+		
 	}
-	
-	public Direction decideDirection(PositionObjectOn2D positionObject) { // positionObject: 기준포인트
-		if (pointOfWestOrNorth == positionObject) {
+
+	public Direction decideDirection(PositionObjectOn2D positionObject) { 
+		if (pointofWestOrNorth == positionObject) {
 			return pointOpposite.decideDirection(positionObject);
 		}
-		return pointOfWestOrNorth.decideDirection(positionObject);
+		return pointofWestOrNorth.decideDirection(positionObject);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((pointOfWestOrNorth == null) ? 0 : pointOfWestOrNorth.hashCode());
 		result = prime * result + ((pointOpposite == null) ? 0 : pointOpposite.hashCode());
+		result = prime * result + ((pointofWestOrNorth == null) ? 0 : pointofWestOrNorth.hashCode());
 		return result;
 	}
 
@@ -60,21 +63,22 @@ public class Line {
 		if (getClass() != obj.getClass())
 			return false;
 		Line other = (Line) obj;
-		if (pointOfWestOrNorth == null) {
-			if (other.pointOfWestOrNorth != null)
-				return false;
-		} else if (!pointOfWestOrNorth.equals(other.pointOfWestOrNorth))
-			return false;
 		if (pointOpposite == null) {
 			if (other.pointOpposite != null)
 				return false;
 		} else if (!pointOpposite.equals(other.pointOpposite))
 			return false;
+		if (pointofWestOrNorth == null) {
+			if (other.pointofWestOrNorth != null)
+				return false;
+		} else if (!pointofWestOrNorth.equals(other.pointofWestOrNorth))
+			return false;
 		return true;
 	}
 
 	public void drawLine(Graphics g) {
-		g.drawLine(pointOfWestOrNorth.getX(), pointOfWestOrNorth.getY(), pointOpposite.getX(), pointOpposite.getY());
+		g.drawLine(pointofWestOrNorth.getX(), pointofWestOrNorth.getY(), pointOpposite.getX(), pointOpposite.getY());
+		//((Graphcis2D) g)g.draw(this);
 	}
 	
 }

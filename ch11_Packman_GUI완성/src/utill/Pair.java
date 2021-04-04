@@ -1,7 +1,7 @@
 package utill;
 
 /**
- * Generic 이란 것은 타입에 대한 대명사(너, 나, 그, 저). 
+ * Generic 이란 것은 타입 대명사.
  */
 public class Pair<F, S> {
 	private F frist;

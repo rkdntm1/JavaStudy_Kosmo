@@ -9,9 +9,9 @@ public class PrintTimer {
 	public static void main(String[] args) {
 		ScheduledJob job = new ScheduledJob();
 		Timer jobScheduler = new Timer();
-		jobScheduler.scheduleAtFixedRate(job, 1000, 3000);
+		jobScheduler.scheduleAtFixedRate(job, 1000, 3000); // 3초마다 
 		try {
-			Thread.sleep(20000);
+			Thread.sleep(20000); // 20초 동안 돌아감
 		} catch (InterruptedException ex) {
 			//
 		}
