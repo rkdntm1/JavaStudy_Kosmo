@@ -31,6 +31,14 @@ public class PositionObjectOn2D {
 		return y;
 	}
 
+	protected void setX(int x) {
+		this.x = x;
+	}
+
+	protected void setY(int y) {
+		this.y = y;
+	}
+
 	public Pair<PositionObjectOn2D, PositionObjectOn2D> findWestOrNorth(PositionObjectOn2D other) {
 		Pair<PositionObjectOn2D, PositionObjectOn2D> ret = null;
 		// 고품질 소프트웨어 개발 표준 중에... 함수에서 return은 단 한번만 문장으로 나타나야한다.

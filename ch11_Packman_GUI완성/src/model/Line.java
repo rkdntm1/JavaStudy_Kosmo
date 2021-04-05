@@ -78,7 +78,49 @@ public class Line {
 
 	public void drawLine(Graphics g) {
 		g.drawLine(pointofWestOrNorth.getX(), pointofWestOrNorth.getY(), pointOpposite.getX(), pointOpposite.getY());
-		//((Graphcis2D) g)g.draw(this);
+		
+		// 미로에 놓인 먹이 그려주기.
+		for (Food food : foods) {
+			food.drawFood(g);
+		}
+	}
+
+	public boolean isPointOnYou(PositionObjectOn2D nextPos) {
+		// 수평 일 때
+		if (pointofWestOrNorth.getY() == pointOpposite.getY() && pointofWestOrNorth.getY() == nextPos.getY() 
+				&& pointofWestOrNorth.getX() <= nextPos.getX() && nextPos.getX() <= pointOpposite.getX()) {
+			return true;
+		}
+		//수직 일 떄
+		if (pointofWestOrNorth.getX() == pointOpposite.getX() && pointofWestOrNorth.getY() == nextPos.getX()
+				&& pointofWestOrNorth.getY() <= nextPos.getY() && nextPos.getY() <= pointOpposite.getY()) {
+			return true;
+		}
+		return false;
+	}
+	                           //팩맨이 걷고 있는 방향 정보
+	public boolean canWork(Direction currentDirection) {
+		switch(this.decideDirection(pointofWestOrNorth)) {
+		case west:
+		case east:
+			return currentDirection == Direction.west || currentDirection == Direction.east;
+		case north:
+		case south:
+			return currentDirection == Direction.north || currentDirection == Direction.south;
+		}
+		return false;
+	}
+
+	public TurningPoint getEndPoint(Direction currentDirection) {
+		switch(currentDirection) {
+		case west:
+		case north:
+			return pointofWestOrNorth;
+		case east:
+		case south:
+			return pointOpposite;
+		}
+		return null;
 	}
 	
 }

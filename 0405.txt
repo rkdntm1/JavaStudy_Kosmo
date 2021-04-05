@@ -1,0 +1,29 @@
+이벤트처리, Swing -> 안드로이드 배우기 쉽다. HTML 할때도 개념은 같다.
+
+ 팩맨을 움직이게 할거야 => 뭐부터?
+시간제조기 : 알람 이벤트 - 스윙 타이머 => 어디에다가?
+컨트롤러
+
+-----------------
+Singleton Pattern : 개념하나에 객체 하나만 --- Static
+ㄴ 다른쪽에서 객체만드는방법이 없다. 
+
+Class SP {
+     private static SP theInstance = new SP();
+		
+     private SP() {}	
+
+     public static SP getInstance(){
+	return theInstance;
+       }
+}
+
+static은 개념에게 묻는것
+static 만들어질때의 순서도 주의
+
+지역변수는 초기화 되지않는다.
+
+고품질) 필요없는 함수는 없앤다.
+
+방향변경 -> 
+

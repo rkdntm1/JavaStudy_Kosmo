@@ -41,5 +41,9 @@ public class TurningPoint extends PositionObjectOn2D {
 			}
 		}
 	}
+
+	public Line getLineOnDirection(Direction nextDirection) {
+		return attachedLines.get(nextDirection);
+	}
 	
 }

@@ -16,7 +16,7 @@ public class Board {
 	// 단계별 전환점과 이로서 구성되는 선들
 	private static int[][][] pointStage = {{ 
 		{ 20, 200, POSITIONPACKMAN }, { 200, 200, 0 }, { 300, 200, 0 }, { 450, 200, 0 }, { 300, 150, 0 } ,
-		{ 100, 300, 0 }, { 200, 300, 0 }, { 300, 300, 0 },
+		{ 100 , 300, 0 }, { 200, 300, 0 }, { 300, 300, 0 },
 		{ 200, 380, 0 }
 		}};
 	private static int[][][] linesStage = {{ { 0, 1 }, { 1, 2 }, { 2, 3 }, { 2, 4 }, { 1, 6 }, { 2, 7 }, { 5, 6 }, { 6, 7 }, { 6, 8 } }};
@@ -27,28 +27,46 @@ public class Board {
 	//돌아 다니는 팩맨
 	private PackMan packMan;
 	
-	public Board(int stageNumber) { // 스테이지를 받아서 생성 (현재는 하나)
+	// Singleton Pattern
+	private static Board theInstance = new Board(33);
+	
+	// Singleton Pattern
+	private Board(int stageNumber) { // 스테이지를 받아서 생성 (현재는 하나)
 		stageNumber = 0;	
 		
 		// pointStage에서 정의한 스테이지별 전환점을 통하여 객체를 만들고 이를 points에 담자
+		TurningPoint startPoint = null;
 		for (int[] point : pointStage[stageNumber]) {
-			points.add(new TurningPoint(point[0], point[1]));
+			TurningPoint tp = new TurningPoint(point[0], point[1]);
+			points.add(tp);
 			if (point[2] == POSITIONPACKMAN) {
-				packMan = new PackMan(point[0], point[1]);
+				startPoint = tp;
 			}
 		}
 		
 		// linesStage에서 정의한 스테이지별 선 정보를 통하여 객체를 만들고 이를 points에서 찾아 정보 연결
 		for (int[] indexOfPoints : linesStage[stageNumber]) {
-			new Line(points.get(indexOfPoints[0]), points.get(indexOfPoints[1]));
+			Line line = new Line(points.get(indexOfPoints[0]), points.get(indexOfPoints[1]));
+			if (startPoint == points.get(indexOfPoints[0])) {
+				packMan = new PackMan(startPoint, line);
+			}
 		}
 	}
 
+	// Singleton Pattern
+	public static Board getInstance() {
+		return theInstance;
+	}
+	
 	public void display(Graphics g) {
 		Set<Line> displayedLine = new HashSet<>();
 		for (TurningPoint pt : points) {	
 			pt.drawLine(displayedLine, g);
 		}
+		packMan.draw(g);
 	}
-	
+
+	public PackMan getPackMan() {
+		return packMan;
+	}
 }

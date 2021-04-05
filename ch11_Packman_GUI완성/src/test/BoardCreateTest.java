@@ -9,7 +9,7 @@ class BoardCreateTest {
 	@Test
 	void test() {
 		try {
-			Board board = new Board(1321);	
+			Board board = Board.getInstance();	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
