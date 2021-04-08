@@ -17,7 +17,7 @@ public class PipeImpl<T> implements Pipe<T> {
         } else if (obj == null) {
             throw new IllegalArgumentException("cannot put null in pipe; null is reserved for pipe-empty sentinel value");
         }
-
+        
         boolean wasAdded = buffer.add(obj);
         notify();
         //System.out.println("added to pipe: " + (obj==null?"<null>":obj.toString()));

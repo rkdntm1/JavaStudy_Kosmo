@@ -1,0 +1,43 @@
+1.Thread
+Performance 
+concurrency = 병행성
+process = 메인함수
+Runnable
+intterupt
+run
+start
+wait
+notify
+Synchronized 화장실 줄서기
+producer consumer
+
+파일 입출력의 <필요성 => Persistance, 방법 => Stream>
+Persistance 영속성 - 파일로 저장 : 쉬움 but 혼잡 -> 복잡한것에 안맞음
+                        - DB에 저장 : 복잡한 정보를 잘구조화해서 DB의 매니지먼트 시스템에 기능을 이용하여 영속화
+                        - 네트워크 -> 클라우드 저장
+                        - 종이 펜 
+Stream  - 강, 흐름, 빨대(연속적 흐름)
+바이트스트림 - 정보의 압축이 잘되어서 성능이 높아진다
+                 -! 사람의 직관적 해석이 불가능.  -> 해석기필요
+문자스트림 - 압축이 덜되어 용랑 적어져 -> 성능 낮아짐
+              - 사람의 직관적 해석이 가능
+
+환경이다를때 가교 역할해주는 : 브릿지 , Adapter	
+flush() : 버퍼에서 비워라 . 비우면 상대방 outfile에 기록이 된다. => 너무 자주하면 성능이 낮아진다.
+         => 너무 안해도 성능이 낮아진다. ㅋ 
+직렬화 serialization 객체의 데이터를 순차적인 데이터로 변환 
+-----------------------------
+서버 Response
+클라이언트 Request
+Tier 클래스용어
+
+URL Uniform Resource Locator
+URI 자원주소
+
+http https(s : secure 보안성이 강화된)
+
+TCP :  먼저 연결하고 데이터보낸다. (전화 걸기) : 순서가 지켜진다 -> 신뢰 업
+UDP = 우편보내기 = DM 발송 = 방송 Broad Casting
+port : 가상선로
+소켓 : 연결 끝점
+
