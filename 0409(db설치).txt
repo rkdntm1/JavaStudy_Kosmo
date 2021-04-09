@@ -1,0 +1,5 @@
+mvnrepository.com
+-ojdbc
+oracle sql developer
+
+oracle : orcl 1234
