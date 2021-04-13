@@ -18,8 +18,17 @@ public class Cell {
 		return col;
 	}
 
+	
+	public boolean hasMine() {
+		return hasMine;
+	}
+
 	public void setMine() {
 		hasMine = true;
+	}
+	
+	public int getAroundMineCount() {
+		return aroundMineCount;
 	}
 
 	public void incMineCount() {

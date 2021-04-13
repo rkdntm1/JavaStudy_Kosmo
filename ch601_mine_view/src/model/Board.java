@@ -63,6 +63,10 @@ public class Board {
 	public int getMines() {
 		return mines;
 	}
+	
+	public Cell[][] getCells() {
+		return cells;
+	}
 
 	private boolean isSafeIndex(Pair<Integer, Integer> p) {		
 		return p.getFrist() >= 0 && p.getFrist() < height && p.getSecond() >= 0 && p.getSecond() < width;
