@@ -4,18 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Planet {
-	private SolarSystemPlanetType planetType;
-	private List<Thing> things = new ArrayList<>();
+	static SolarSystemPlanetType planetType;
+	private List<Thing> things = new ArrayList<>();  
 	
-	public Planet(SolarSystemPlanetType planetType) {
+	public Planet(SolarSystemPlanetType planetType) { //받은 값을 기억하자
 		this.planetType = planetType;
 	}
-	
-	// 상속일떄는 다른쪽에서 뭔가 던져주는것을 통칭 할 수 있다. 상속 = 통칭 ! 
-	public void load(Thing thing){
-		things.add(thing);
-	}
 
+	public void load(Thing thing) { // 상속일때는 통칭시킴 
+		things.add(thing);
+	}	
 	
-			
 }
