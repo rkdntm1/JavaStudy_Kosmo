@@ -36,7 +36,7 @@ create table t_course (
 );
 
 create table t_class (
-	id			integer			primary key,
+	id			char(7)			primary key,
 	prof_id		integer			references t_professor (id),
 	course_id	char(4)			references t_course (id),
 	year 		integer,
@@ -47,9 +47,9 @@ create table t_class (
 );
 
 create table t_takes(
-	class_id	integer		references t_class (id),
+	class_id	char(7)		references t_class (id),
 	student_id	integer		references t_student (id),
-	grade		varchar2(2),
+	grade		char(2),
 	primary key(student_id, class_id)			
 	-- 어떤 순서로 인덱스를 만들어야 할까?
 	-- create : 시험치고 평가하고 등록할때.
@@ -58,4 +58,6 @@ create table t_takes(
 	-- select : 학생			
 );
 
+--인덱스는 항상 read 할때 빠름.
+--과, 교과목 입장에서 빠르게 처리할때
 create index idx_takes_cls on t_takes(class_id, grade);
