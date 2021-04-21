@@ -109,5 +109,39 @@ select s.*, d.*
   from t_dept d, t_student s
  where s.dept_id = d.id;
   
+-- 301호에서 개설된 강좌
+select *
+  from t_class
+ where class_room = '301호';
+ 
+-- 301호에서 개설된 강좌의 과목명
+select c.title
+  from (select *
+  		  from t_class
+ 		 where class_room = '301호') c301, t_course c
+ where c301.course_id = c.id 
+ 
+select title
+  from t_course
+ where id in (select course_id
+  		  from t_class
+ 		 where class_room = '301호');
+ 
+ 
+  
+create table t_course (
+	id		char(4)			primary key,
+	title	varchar2(500)	not null,
+	credit  integer			not null
+);
 
-    
+create table t_class (
+	id			char(7)			primary key,
+	prof_id		integer			references t_professor (id),
+	course_id	char(4)			references t_course (id),
+	year 		integer,
+	semester	integer,
+	division	char(1),
+	class_room  varchar2(500),
+	enroll		integer			
+);

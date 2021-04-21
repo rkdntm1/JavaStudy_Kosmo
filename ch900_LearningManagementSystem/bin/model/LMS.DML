@@ -4,6 +4,8 @@ insert into t_dept(id,	name, office)
 	values(923, '산업공학과', '207호');			
 insert into t_dept(id,	name, office)
 	values(925, '전자공학과', '308호');
+insert into t_dept(id,	name, office)
+	values(930, '원자력공학과', '508호');						
 						
 insert into t_student(id, dept_id, ssn, name, year)
 	values(1292001, 920, '900424-1825409', '김광식', 2);		

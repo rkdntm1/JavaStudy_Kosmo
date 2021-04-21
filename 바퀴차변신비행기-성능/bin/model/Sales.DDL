@@ -7,8 +7,11 @@ drop table t_party;
 create table t_party(
 	id			integer			primary key,
 	name		varchar2(500),
-	balance		integer
+	balance		number(19)   -- long
 );
+--integer 2 100 000 000  > int number(9)
+--2^10 = 10^3 > 2^(10 * 6 + 3) = 10^18 * 8 => 19
+--long number(19)
 
 --상품(product)
 create table t_product(
@@ -34,3 +37,20 @@ create table t_detail(
 	count			integer,
 	primary key(trade_id, product_id)
 );
+
+alter table t_detail add constraint fk_detail2trade foreign key (trade_id) references t_trade(id);
+alter table t_detail add constraint fk_detail2product foreign key (product_id) references t_product(id);
+
+drop view v_tot_buy;
+
+CREATE OR REPLACE VIEW v_amt_per_product AS
+select t.id id, t.buyer_id bid, p.id pid, d.count * p.unitprice amt
+  from t_trade t, t_detail d, t_product p
+ where t.id = d.trade_id				
+   and d.product_id = p.id;
+			
+   
+ from v_tot_buy
+where id = 4 
+ 
+ 
