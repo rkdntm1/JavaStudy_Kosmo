@@ -1,0 +1,31 @@
+/* 각자 만들기 Each-Strategy*/
+insert into te_reply(id, master_id, contents)
+	values(1, null, '어려운거');
+insert into te_post(id, title)
+	values(1, '자바란');
+insert into te_reply(id, master_id, contents)
+	values(2, 1, '열공대상');
+insert into te_reply(id, master_id, contents)
+	values(3, 1, '열공대상');
+insert into te_reply(id, master_id, contents)
+	values(4, 1, '열공대상2');
+
+/* 상위로 만들기 Top_strategy */
+insert into tt_reply(id, decrim, master_id, title, contents)
+	values(1, 'p', null, '자바란', '어려운거');
+insert into tt_reply(id, decrim, master_id, contents) -- 댓글	
+	values(2, 'r', 1, '열공대상');
+
+/* 하위 만들기 Bottom_strategy*/
+
+
+/* 성능을 고려한 테이블 */
+insert into t_reply(id, descrim, title, contents)
+	values('aaaaa', 'p', '자바란', '어려운거');
+insert into t_reply(id, descrim, contents)
+	values('aaaaa-aaaaa', 'r', '열공대상');
+
+-- 두건 모두 삭제하기 (성능) 
+delete from t_reply where id like 'aaaaa%';
+-- 댓글들 모두 보기
+select * from te_reply r, te_post p where r.master_id is not null;
