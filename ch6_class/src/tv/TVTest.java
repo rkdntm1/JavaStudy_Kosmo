@@ -1,12 +1,12 @@
 package tv;
 
-public class TVTest {
+public class TVTEST {
 
 	public static void main(String[] args) {
-		Television my = new Television();
-		my.setChannel(8);
-		System.out.println(my); //toString()는 자동 호출 됨!
-		System.out.println(my.getChannel());
+		TeleVision tv = new TeleVision();
+		System.out.println(tv.getChannel());
+		tv.setChannel(44);
+		System.out.println(tv);
 		
 	}
 

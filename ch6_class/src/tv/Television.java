@@ -1,29 +1,29 @@
 package tv;
 
-public class Television {
-	private int channel; // 채널
-	private int volumn; // 볼륨
-	private boolean onOff; // 켜짐상태
-
-	// Default Constructor. 기본 생성자
-	public Television() {
-		channel = 1; // 파란색 -> 속성(atribute)
+public class TeleVision {
+	private int channel;
+	private int volumn;
+	private boolean onOff;
+	
+	// 디폴트 생성자
+	public TeleVision(){
+		channel = 1;
 		volumn = 6;
 		onOff = false;
 	}
 
-	// 우클릭 소스 -> generator get/set
-	public int getChannel() { //get 가져옴 set 갑집어넣음
-		return channel; 
+	public int getChannel() {
+		return channel;
+	}
+
+	public void setChannel(int ch) {
+		this.channel = ch; // this : 나한테있는
 	}
 
 	@Override
 	public String toString() {
-		return "Television [channel=" + channel + ", volumn=" + volumn + ", onOff=" + onOff + "]";
+		return "TeleVision [channel=" + channel + ", volumn=" + volumn + ", onOff=" + onOff + "]";
 	}
-
-	public void setChannel(int channel) {
-		this.channel = channel; //this : 나한테 있는 
-	}
-
+	
+	
 }
